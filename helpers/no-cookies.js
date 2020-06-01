@@ -1,4 +1,5 @@
 import { find } from './find.js';
+import log from './log.js';
 
 async function noCookies() {
   const click = true;
@@ -15,6 +16,7 @@ async function noCookies() {
     click
   );
   await find('#CybotCookiebotDialogBodyLevelButtonAccept', click);
+  log('Cookies unselected.', 'yellow');
 }
 
 export { noCookies };

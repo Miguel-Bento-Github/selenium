@@ -1,4 +1,5 @@
 import { find } from '../helpers/find.js';
+import { click } from '../helpers/variables.js';
 import log from '../helpers/log.js';
 
 /**
@@ -10,26 +11,28 @@ import log from '../helpers/log.js';
  * @param {string} month
  */
 async function selectDates(start, end, month) {
-  const click = true;
   try {
     await find('.tp-starter__input--start-date', click);
     let currentMonth = await find('.react-datepicker__current-month');
     currentMonth = await currentMonth.getText();
-    log(`current month is ${currentMonth}`, 'yellow');
+    log(`Current search for month and year is ${currentMonth}`, 'yellow');
 
     while (!currentMonth.toLowerCase().includes(month)) {
-      log('selecting next month...', 'green');
+      log('Selecting next month...', 'yellow');
       await find('.react-datepicker__navigation--next', click);
       currentMonth = await find('.react-datepicker__current-month');
       currentMonth = await currentMonth.getText();
     }
-    log(`Selected month found. Current month is now ${currentMonth}`, 'green');
+    log(
+      `Selected month found. Current month is now ${currentMonth}. ✔`,
+      'green'
+    );
 
     await find(`div[aria-label="day-${start}"]`, click);
-    log(`start date is ${start} of ${currentMonth}`);
+    log(`Start date is ${start} - ${currentMonth}. ✔`, 'green');
     await find('.tp-starter__input--end-date', click);
     await find(`div[aria-label="day-${end}"]`, click);
-    log(`start date is ${end} of ${currentMonth}`);
+    log(`End date is ${end} - ${currentMonth}. ✔`, 'green');
   } catch ({ message }) {
     throw new Error(message);
   }

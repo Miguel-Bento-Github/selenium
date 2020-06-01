@@ -16,9 +16,9 @@ export default async function intro(language, currency) {
   try {
     await selectLanguage(language);
     await selectCurrency(currency);
-    log('all selections finished', 'green');
+    log('all selections finished ✔', 'green');
     await find('.button-apply-language', click);
-    log('form submitted', 'green');
+    log('form submitted ✔', 'green');
 
     return true;
   } catch ({ message }) {

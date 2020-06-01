@@ -1,5 +1,4 @@
-import webdriver from 'selenium-webdriver';
-const { Builder } = webdriver;
+import { driver } from '../main.js';
 import { noCookies } from '../helpers/no-cookies.js';
 import { find } from '../helpers/find.js';
 import { selectDates } from './select-dates.js';
@@ -12,7 +11,6 @@ export default async function starterBlock() {
   let url;
 
   try {
-    const driver = new Builder().forBrowser('chrome').build();
     await driver.get('https://www.eurail.com/en');
 
     await noCookies();
@@ -36,9 +34,7 @@ export default async function starterBlock() {
   } catch (error) {
     throw new Error(error.message);
   } finally {
-    log('Test successful.', 'green');
+    log('Test finished.', 'yellow');
     await driver.quit();
   }
 }
-
-starterBlock();
