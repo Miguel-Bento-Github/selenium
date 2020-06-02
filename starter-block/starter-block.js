@@ -1,10 +1,11 @@
 import { driver } from '../main.js';
 import { noCookies } from '../helpers/no-cookies.js';
-import find from '../helpers/find.js';
+import { find } from '../helpers/find.js';
 import log from '../helpers/log.js';
 import { selectDates } from './select-dates.js';
 import { selectTravellers } from './select-travellers.js';
 import { selectDestination } from './select-destination.js';
+import { ageGroups } from '../helpers/variables.js';
 
 export default async function starterBlock() {
   const click = true;
@@ -19,7 +20,17 @@ export default async function starterBlock() {
 
     await selectDates(1, 15, 'july');
 
-    await selectTravellers();
+    const travellers = {
+      youth: {
+        name: ageGroups.youths,
+        amount: 2,
+      },
+      adult: {
+        name: ageGroups.adults,
+        amount: 3,
+      },
+    };
+    await selectTravellers(travellers);
 
     await selectDestination('italy');
 

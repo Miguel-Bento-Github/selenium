@@ -1,4 +1,4 @@
-import find from '../helpers/find.js';
+import { find } from '../helpers/find.js';
 import { click } from '../helpers/variables.js';
 import log from '../helpers/log.js';
 

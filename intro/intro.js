@@ -1,7 +1,7 @@
 import selectLanguage from './select-language.js';
 import selectCurrency from './select-currency.js';
 import { click } from '../helpers/variables.js';
-import find from '../helpers/find.js';
+import { find } from '../helpers/find.js';
 import log from '../helpers/log.js';
 import { driver } from '../main.js';
 

@@ -1,5 +1,5 @@
 import log from '../helpers/log.js';
-import find from '../helpers/find.js';
+import { find } from '../helpers/find.js';
 import { click } from '../helpers/variables.js';
 
 export async function selectDestination(destination) {

@@ -1,6 +1,5 @@
 import webdriver from 'selenium-webdriver';
 import { driver } from '../main.js';
-import log from './log.js';
 const { By, until } = webdriver;
 
 /**
@@ -11,7 +10,7 @@ const { By, until } = webdriver;
  * @param {boolean} click
  * @returns {node} selected element
  */
-export default async function find(css, click) {
+export async function find(css, click) {
   try {
     let element = await driver.wait(until.elementLocated(By.css(css)));
     if (click) element.click();
