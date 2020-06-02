@@ -10,7 +10,7 @@ import log from '../helpers/log.js';
  * @param {number} end
  * @param {string} month
  */
-async function selectDates(start, end, month) {
+export async function selectDates(start, end, month) {
   try {
     await find('.tp-starter__input--start-date', click);
     let currentMonth = await find('.react-datepicker__current-month');
@@ -34,7 +34,6 @@ async function selectDates(start, end, month) {
     await find(`div[aria-label="day-${end}"]`, click);
     log(`End date is ${end} - ${currentMonth}. ✔`, 'green');
   } catch ({ message }) {
-    throw new Error(message);
+    log(message, 'red');
   }
 }
-export { selectDates };

@@ -1,8 +1,7 @@
 import webdriver from 'selenium-webdriver';
-import { driver } from '../main.js';
+import { driver } from './driver.js';
 import log from './log.js';
 const { By, until } = webdriver;
-
 /**
  * Finds element using css selectors.
  * Verifies if the element is currently in the DOM.
@@ -17,7 +16,6 @@ export async function find(css, click) {
     if (click) element.click();
     return element;
   } catch ({ message }) {
-    log(`Error after trying to select ${css}`, 'red');
-    throw new Error(message);
+    log(`Error after trying to select ${css}. ${message}`, 'red');
   }
 }

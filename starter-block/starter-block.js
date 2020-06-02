@@ -1,4 +1,4 @@
-import { driver } from '../main.js';
+import { driver } from '../helpers/driver.js';
 import { noCookies } from '../helpers/no-cookies.js';
 import { find } from '../helpers/find.js';
 import log from '../helpers/log.js';
@@ -7,15 +7,13 @@ import { selectTravellers } from './select-travellers.js';
 import { selectDestination } from './select-destination.js';
 import { travellers } from '../helpers/variables.js';
 import { noSubscription } from '../helpers/no-subscription.js';
+import { getUrl } from '../helpers/get-url.js';
 
 export default async function starterBlock() {
   const click = true;
-  let url;
 
   try {
     await driver.get('https://www.eurail.com/en');
-
-    await noCookies();
 
     await find('a[href="/en/plan-your-trip"]', click);
 
@@ -30,15 +28,10 @@ export default async function starterBlock() {
     // submit
     await find('.tp-starter__form__submit', click);
 
-    // send url to console.
-    await driver.sleep(500);
-    url = await driver.getCurrentUrl();
-
-    log(url, 'cyan');
-  } catch (error) {
-    throw new Error(error.message);
+    await getUrl();
+  } catch ({ message }) {
+    log(message, 'red');
   } finally {
     log('Test finished.', 'yellow');
-    await driver.quit();
   }
 }

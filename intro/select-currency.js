@@ -11,8 +11,8 @@ export default async function selectCurrency(currency) {
   try {
     await find('#eurail-language-splash-currency', click);
     await find(`option[value='${currency}']`, click);
-    log('currency selected ✔', 'yellow');
-  } catch (error) {
-    throw new Error(error);
+    log(`${currency} currency selected ✔`, 'green');
+  } catch ({ message }) {
+    log(`${currency} currency not selected ❌, ${message}`, 'red');
   }
 }

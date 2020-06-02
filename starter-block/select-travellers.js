@@ -1,6 +1,6 @@
 import { find } from '../helpers/find.js';
 import { click } from '../helpers/variables.js';
-import { driver } from '../main.js';
+import { driver } from '../helpers/driver.js';
 import log from '../helpers/log.js';
 
 /**

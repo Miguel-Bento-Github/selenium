@@ -1,4 +1,8 @@
 export const click = true;
+export const logs = {
+  start: 'start_log',
+  end: 'start_log',
+};
 
 // languages eurail.com
 export const languages = {};
