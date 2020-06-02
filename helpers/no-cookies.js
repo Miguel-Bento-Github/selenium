@@ -1,4 +1,4 @@
-import { find } from './find.js';
+import find from './find.js';
 import log from './log.js';
 
 async function noCookies() {

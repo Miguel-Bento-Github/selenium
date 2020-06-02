@@ -1,4 +1,4 @@
-import { find } from '../helpers/find.js';
+import find from '../helpers/find.js';
 import { click } from '../helpers/variables.js';
 
 async function selectTravellers() {

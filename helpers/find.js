@@ -11,7 +11,7 @@ const { By, until } = webdriver;
  * @param {boolean} click
  * @returns {node} selected element
  */
-async function find(css, click) {
+export default async function find(css, click) {
   try {
     let element = await driver.wait(until.elementLocated(By.css(css)));
     if (click) element.click();
@@ -20,4 +20,3 @@ async function find(css, click) {
     throw new Error(message);
   }
 }
-export { find };

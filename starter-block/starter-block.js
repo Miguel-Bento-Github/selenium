@@ -1,9 +1,9 @@
 import { driver } from '../main.js';
 import { noCookies } from '../helpers/no-cookies.js';
-import { find } from '../helpers/find.js';
+import find from '../helpers/find.js';
+import log from '../helpers/log.js';
 import { selectDates } from './select-dates.js';
 import { selectTravellers } from './select-travellers.js';
-import log from '../helpers/log.js';
 import { selectDestination } from './select-destination.js';
 
 export default async function starterBlock() {
