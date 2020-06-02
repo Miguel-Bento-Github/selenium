@@ -15,6 +15,7 @@ export default async function starterBlock() {
   try {
     await driver.get('https://www.eurail.com/en');
 
+    // this page contains the starter-block
     await find('a[href="/en/plan-your-trip"]', click);
 
     await noSubscription();
@@ -23,12 +24,13 @@ export default async function starterBlock() {
 
     await selectTravellers(travellers);
 
-    await selectDestination('italy');
+    await selectDestination('paris');
 
     // submit
     await find('.tp-starter__form__submit', click);
 
-    await getUrl();
+    const url = await getUrl();
+    return url;
   } catch ({ message }) {
     log(message, 'red');
   } finally {

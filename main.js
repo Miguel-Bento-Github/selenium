@@ -1,27 +1,30 @@
+import log from './helpers/log.js';
 import starterBlock from './starter-block/starter-block.js';
+import tripPlanner from './trip-planner/trip-planner.js';
 import index from './intro/index.js';
 import { languages, currencies, logs } from './helpers/variables.js';
-import log from './helpers/log.js';
+import { getCurrentDate } from './helpers/getCurrentDate.js';
 import { driver } from './helpers/driver.js';
+import 'chromedriver';
 
-async function app() {
+async function test() {
   try {
     // start log html
+    const start = getCurrentDate();
     log(logs.start);
 
     await index(languages.EN, currencies.EUR);
-    await starterBlock();
+    const url = await starterBlock();
+    // await tripPlanner(url);
   } catch ({ message }) {
     log(message, 'red');
   } finally {
-    const d = new Date();
-    const date = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getMonth() + 1}`;
-    const time = `${d.getHours()}h:${d.getMinutes()}m:${d.getSeconds()}s`;
+    const end = getCurrentDate();
 
-    log(`${time} ${date}`, 'white');
     log(logs.end);
+    await driver.sleep(4000);
     driver.quit();
   }
 }
 
-app();
+test();

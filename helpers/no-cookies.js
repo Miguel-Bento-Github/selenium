@@ -2,7 +2,7 @@ import { find } from './find.js';
 import { click } from './variables.js';
 import log from './log.js';
 
-async function noCookies() {
+export async function noCookies() {
   try {
     await find(
       'label[for="CybotCookiebotDialogBodyLevelButtonPreferences"]',
@@ -22,5 +22,3 @@ async function noCookies() {
     log(`❌ There was an issue with the cookies, ${message}`, 'red');
   }
 }
-
-export { noCookies };
