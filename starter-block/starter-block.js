@@ -5,7 +5,7 @@ import log from '../helpers/log.js';
 import { selectDates } from './select-dates.js';
 import { selectTravellers } from './select-travellers.js';
 import { selectDestination } from './select-destination.js';
-import { ageGroups } from '../helpers/variables.js';
+import { travellers } from '../helpers/variables.js';
 
 export default async function starterBlock() {
   const click = true;
@@ -20,16 +20,6 @@ export default async function starterBlock() {
 
     await selectDates(1, 15, 'july');
 
-    const travellers = {
-      youth: {
-        name: ageGroups.youths,
-        amount: 2,
-      },
-      adult: {
-        name: ageGroups.adults,
-        amount: 3,
-      },
-    };
     await selectTravellers(travellers);
 
     await selectDestination('italy');
