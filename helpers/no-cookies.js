@@ -1,8 +1,8 @@
 import { find } from './find.js';
+import { click } from './variables.js';
 import log from './log.js';
 
 async function noCookies() {
-  const click = true;
   await find(
     'label[for="CybotCookiebotDialogBodyLevelButtonPreferences"]',
     click

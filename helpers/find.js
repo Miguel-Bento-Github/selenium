@@ -1,5 +1,6 @@
 import webdriver from 'selenium-webdriver';
 import { driver } from '../main.js';
+import log from './log.js';
 const { By, until } = webdriver;
 
 /**
@@ -16,6 +17,7 @@ export async function find(css, click) {
     if (click) element.click();
     return element;
   } catch ({ message }) {
+    log(`Error after trying to select ${css}`, 'red');
     throw new Error(message);
   }
 }

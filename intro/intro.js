@@ -4,6 +4,7 @@ import { click } from '../helpers/variables.js';
 import { find } from '../helpers/find.js';
 import log from '../helpers/log.js';
 import { driver } from '../main.js';
+import { noCookies } from '../helpers/no-cookies.js';
 
 /**
  * Receives two strings and selects the associated values.
@@ -17,10 +18,9 @@ export default async function intro(language, currency) {
     await selectLanguage(language);
     await selectCurrency(currency);
     log('all selections finished ✔', 'green');
+
     await find('.button-apply-language', click);
     log('form submitted ✔', 'green');
-
-    return true;
   } catch ({ message }) {
     throw new Error(message);
   } finally {

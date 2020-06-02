@@ -31,7 +31,7 @@ export const travellers = {
   },
   youths: {
     name: ageGroups.youths,
-    amount: 1,
+    amount: 3,
   },
   adults: {
     name: ageGroups.adults,
